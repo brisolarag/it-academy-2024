@@ -1,0 +1,100 @@
+
+<div class="samenu-container">
+    @if (showing == "samenu") {
+        <div class="samenu-controles">
+            @if (currentStatus == 4 || currentStatus == undefined) {
+                <button type="button" class="btn btn-primary" (click)="novoSorteio()">Etapa Apostas: Iniciar</button>
+                <button type="button" class="btn btn-secondary disabled">Etapa Sorteio</button>
+                <button type="button" class="btn btn-secondary disabled">Etapa Apuração</button>
+                <button type="button" class="btn btn-secondary disabled">Etapa Premiação</button>
+            } @else {
+                
+            }
+            @if (currentStatus == 0) {
+                <button type="button" class="btn btn btn-outline-secondary disabled">Apostas em andamento</button>
+                <button type="button" class="btn btn-info" (click)="setToSorteio()">Etapa Sorteio: Iniciar</button>
+                <button type="button" class="btn btn-secondary disabled">Etapa Apuração</button>
+                <button type="button" class="btn btn-secondary disabled">Etapa Premiação</button>
+            }
+            @if (currentStatus == 1) {
+                <button type="button" class="btn btn-light disabled">Etapa Apostas: Encerrada</button>
+                <button type="button" class="btn btn btn-outline-secondary disabled">Sorteio em andamento</button>
+                <button type="button" class="btn btn-success" (click)="setToApuracao()">Iniciar etapa: Apuração</button>
+                <button type="button" class="btn btn-secondary disabled">Etapa Premiação</button>
+            }
+            @if (currentStatus == 2) {
+                <button type="button" class="btn btn-light disabled">Etapa Apostas: Encerrada</button>
+                <button type="button" class="btn btn-light disabled">Etapa Sorteio: Encerrada</button>
+                <button type="button" class="btn btn btn-outline-secondary disabled">Apuração em andamento</button>
+                <button type="button" class="btn btn-warning" (click)="setToPremiacao()">Iniciar etapa: Premiação</button>
+            }
+            @if (currentStatus == 3) {
+                <button type="button" class="btn btn-light disabled">Etapa Apostas: Encerrada</button>
+                <button type="button" class="btn btn-light disabled">Etapa Sorteio: Encerrada</button>
+                <button type="button" class="btn btn-light disabled">Etapa Apuração: Encerrada</button>
+                <button type="button" class="btn btn-danger" (click)="setToEncerrado()">Encerrar premiação</button>
+            }
+        </div>
+    
+        <h6 style="text-align: center;margin-top: 10px;margin-bottom: 20px;">NÚMEROS SORTEADOS DA RODADA:</h6>
+        <div class="samu-numeros-sorteados">
+            @for (numero of numerosSorteadosRodada; track numero) {
+                <div class="nSorteado"><p>{{numero}}</p></div>
+            }
+        </div>
+        
+    
+        <h6 style="text-align: center;margin-top: 10px;margin-bottom: 20px;">APOSTAS REALIZADAS NA RODADA:</h6>
+        <div class="samu-apostas">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Números escolhidos</th>
+                    <th scope="col">Data aposta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (aposta of apostasRodada; track aposta.id) {
+                        <tr>
+                        <th scope="row">{{aposta.id}}</th>
+                        <td>{{aposta.nome}}</td>
+                        <td>{{transformCPF(aposta.cpf)}}</td>
+                        <td>{{aposta.numerosEscolhidos}}</td>
+                        <td>{{formatarData(aposta.data)}}</td>
+                        </tr>
+                    }
+                </tbody>
+                </table>
+        </div>
+    
+        <button type="button" class="btn btn-dark last-sorteios" (click)="goVerSorteiosAnteriores()">Ver sorteios anteriores</button>
+    } @else {
+        <button type="button" class="btn btn-dark last-sorteios" (click)="goSaMenu()">Voltar para SA Menu</button>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">ID (aposta/sorteio)</th>
+                <th scope="col">Nome do Ganhador</th>
+                <th scope="col">CPF do Ganhador</th>
+                <th scope="col">Números sorteados</th>
+                <th scope="col">Data Aposta</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (sorteioGanhador of sorteiosAnteriores; track sorteioGanhador.idAposta + sorteioGanhador.idSorteio) {
+                    <tr>
+                    <th scope="row">{{sorteioGanhador.idAposta + " / " + sorteioGanhador.idSorteio}}</th>
+                    <td>{{sorteioGanhador.nomeGanhador}}</td>
+                    <td>{{transformCPF(sorteioGanhador.cpfGanhador)}}</td>
+                    <td>{{sorteioGanhador.numerosEscolhidos}}</td>
+                    <td>{{formatarData(sorteioGanhador.data)}}</td>
+                    </tr>
+                }
+            </tbody>
+            </table>
+    }
+</div>
+    

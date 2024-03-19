@@ -1,0 +1,47 @@
+<div class="apostar-container">
+    <form #f="ngForm" (ngSubmit)="submitForm(f)" novalidate>
+        <div class="mb-3">
+          <label for="nomeInput" class="form-label">Nome:</label>
+          <input type="text" class="form-control" id="nomeInput" placeholder="Ex.: José da Silva" name="nome" [(ngModel)]="formData.nome" required (blur)="validarNome(formData.nome)"/>
+          <div id="nomeHelp" class="form-text" style="color: #FF204E;">{{nomeVerificatorString}}</div>
+        </div>
+        <div class="mb-3">
+          <label for="cpfInput" class="form-label">CPF:</label>
+          <input type="text" class="form-control" id="cpfInput" aria-describedby="cpfHelp" placeholder="Ex.: 84565412352" name="cpf" [(ngModel)]="formData.cpf" required pattern="[0-9]*" (blur)="validarCPF(formData.cpf)" />
+          <div id="cpfHelp" class="form-text" style="color: #FF204E;">{{cpfVerificatorString}}</div>
+          <div id="cpfHelp" class="form-text">Digite apenas números</div>
+        </div>
+        <div class="row-inputs-n" aria-describedby="nHelp">
+            <div class="input-container">
+                <input type="text" class="form-control" id=n1 placeholder="Ex.: 10" name="n1" [(ngModel)]="formData.numerosEscolhidos[0]" (blur)="validarNumero(formData.numerosEscolhidos[0], 0)"/>
+                <div id="numHelp1" class="form-text" style="color: #FF204E;">{{numVerificatorString}}</div>
+            </div>
+            <div class="input-container">
+                <input type="text" class="form-control" id=n2 placeholder="Ex.: 10" name="n2" [(ngModel)]="formData.numerosEscolhidos[1]" (blur)="validarNumero(formData.numerosEscolhidos[1], 1)"/>
+            </div>
+            <div class="input-container">
+                <input type="text" class="form-control" id=n3 placeholder="Ex.: 30" name="n3" [(ngModel)]="formData.numerosEscolhidos[2]" (blur)="validarNumero(formData.numerosEscolhidos[2], 2)"/>
+            </div>
+            <div class="input-container">
+                <input type="text" class="form-control" id=n4 placeholder="Ex.: 40" name="n4" [(ngModel)]="formData.numerosEscolhidos[3]" (blur)="validarNumero(formData.numerosEscolhidos[3], 3)"/>
+            </div>
+            <div class="input-container">
+                <input type="text" class="form-control" id=n5 placeholder="Ex.: 50" name="n5" [(ngModel)]="formData.numerosEscolhidos[4]" (blur)="validarNumero(formData.numerosEscolhidos[4], 4)"/>
+            </div>
+        </div>
+        <div id="n1Help" class="form-text">Deve receber números entre 1 e 50</div>
+        <div id="n2Help" class="form-text">Deixe o número que deseja randomizar em branco</div>
+        @if (sorteioAtivo && (sorteioAtivo.status != 0 || sorteioAtivo.status == null)) {
+            <button type="submit" class="btn btn-primary disabled">Não pode registrar apostas no momento</button>
+        }
+        @if (sorteioAtivo && sorteioAtivo.status == 0) {
+            @if (checkTodosCampos()) {
+                <button type="submit" class="btn btn-primary">Registrar aposta!</button>
+            } @else {
+                <button type="submit" class="btn btn-primary disabled">Registrar aposta!</button>
+            }
+        }
+    </form>
+</div>
+
+

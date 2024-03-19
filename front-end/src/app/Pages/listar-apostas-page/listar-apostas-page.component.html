@@ -1,0 +1,33 @@
+<div class="listaApostas-container">
+
+  @if (currentStatus == undefined || sorteioAtivo == undefined) {
+    <h1 style="text-align: center;">Nenhum sorteio no momento</h1>
+  } @else {
+    <h4>Fase: {{currentStatus}} - Sorteio: {{sorteioAtivo.id}}</h4>
+    @if (sorteioAtivo.status !== 4) {
+      <h6>Apostas do sorteio:</h6>
+    } @else {
+      <h6>...</h6>
+    }
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Data Aposta</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (aposta of apostas; track aposta.id) {
+            <tr>
+              <th scope="row">{{aposta.id}}</th>
+              <td>{{aposta.nome}}</td>
+              <td>{{aposta.data}}</td>
+            </tr>
+        }
+      </tbody>
+    </table>
+  }
+
+
+</div>

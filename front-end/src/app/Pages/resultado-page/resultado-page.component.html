@@ -1,0 +1,120 @@
+<div class="resultado-container">
+    @if (sorteioAtivo == null || sorteioAtivo == undefined) {
+        <h1 style="text-align: center;">Nenhum sorteio no momento</h1>
+    } @else {
+        @if (sorteioAtivo.status == 0) {
+            <h1>Fase: {{getStatus(sorteioAtivo.status)}}</h1>
+            <p style="color: #FDA403;">Aguarde até a apuração do sorteio</p>
+        }
+        @if (sorteioAtivo.status == 1) {
+            <h1>Fase: {{getStatus(sorteioAtivo.status)}}</h1>
+            <p style="color: #FDA403;">Aguarde até a apuração do sorteio</p>
+        }
+        @if (sorteioAtivo.status == 2 && ganhadoresRodada != undefined) {
+            <h1>Fase: {{getStatus(sorteioAtivo.status)}}</h1>
+            <h3>Ganhadores:</h3>
+            <h6>{{numerosGanhadoresString}}</h6>
+            <div class="ganhadores-sorteio">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Números escolhidos</th>
+                        <th scope="col">Data aposta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (aposta of ganhadoresRodada; track aposta.id) {
+                            <tr>
+                            <th scope="row">{{aposta.id}}</th>
+                            <td>{{aposta.nome}}</td>
+                            <td>{{aposta.numerosEscolhidos}}</td>
+                            <td>{{formatarData(aposta.data)}}</td>
+                            </tr>
+                        }
+                    </tbody>
+                    </table>
+            </div>
+
+            
+            <h6 style="margin-top: 30px;">Números mais escolhidos da rodada:</h6>
+            
+            <div class="numeros-rodada">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Número</th>
+                        <th scope="col">Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (numero of numerosMaisEscolhidos; track numero.numero) {
+                            <tr>
+                            <th scope="row">{{numero.numero}}</th>
+                            <td>{{numero.quantidade}}</td>
+                            </tr>
+                        }
+                    </tbody>
+                    </table>
+            </div>
+            
+        }
+        @if (sorteioAtivo.status == 3 && ganhadoresRodada != undefined) {
+            <h1>Fase: {{getStatus(sorteioAtivo.status)}}</h1>
+            <h3>Resgate seu premio no botão da direita:</h3>
+            <h6>{{numerosGanhadoresString}}</h6>
+            <div class="premiacao-sorteio">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Números escolhidos</th>
+                        <th scope="col">Data aposta</th>
+                        <th scope="col">Prêmio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (aposta of ganhadoresRodada; track aposta.id) {
+                            <tr>
+                            <th scope="row">{{aposta.id}}</th>
+                            <td>{{aposta.nome}}</td>
+                            <td>{{aposta.numerosEscolhidos}}</td>
+                            <td>{{formatarData(aposta.data)}}</td>
+                            <td><button (click)="printPDF(aposta.nome, aposta.numerosEscolhidos)">Download</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                    </table>
+            </div>
+
+            <h6 style="margin-top: 30px;">Números mais escolhidos da rodada:</h6>
+            
+            <div class="numeros-rodada">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Número</th>
+                        <th scope="col">Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (numero of numerosMaisEscolhidos; track numero.numero) {
+                            <tr>
+                            <th scope="row">{{numero.numero}}</th>
+                            <td>{{numero.quantidade}}</td>
+                            </tr>
+                        }
+                    </tbody>
+                    </table>
+            </div>
+        }
+
+        @if ((sorteioAtivo.status == 2 || sorteioAtivo.status == 3) && ganhadoresRodada == undefined) {
+            <h1>Fase: {{getStatus(sorteioAtivo.status)}}</h1>
+            <h3 style="color: #FF204E;">Não tiveram ganhdores nesta rodada</h3>
+        }
+        
+    }
+</div>

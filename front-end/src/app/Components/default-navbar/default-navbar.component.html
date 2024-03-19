@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-navy">
+    <div class="container-fluid">
+        <a class="navbar-brand" (mouseenter)="changeImage('assets/navbar/delllogo_black.jpg')" (mouseleave)="changeImage('assets/navbar/delllogo.jpeg')" href="#">
+            <img src="assets/navbar/delllogo.jpeg" [src]="logoSrc" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active apostarlinkclass" aria-current="page" (click)="navigateToApostar()">Apostar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="navigateToListaApostas()">Lista de apostas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="navigateToResultado()">Resultado</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+            @if (token) {
+              <button id="samenu-btn" class="btn btn-warning" (click)="navigateToSaMenu()">SA Menu</button>
+              <button id="salogin-btn" class="btn btn-danger" (click)="logoutSa()">Logout SA</button>
+            } @else {
+              <button id="samenu-btn" class="btn btn-secondary disabled" (click)="navigateToSaMenu()">SA Menu</button>
+              <button id="salogin-btn" class="btn btn-danger" (click)="navigateToLoginSa()">Login SA</button>
+            }
+        </div>
+      </div>
+    </div>
+  </nav>

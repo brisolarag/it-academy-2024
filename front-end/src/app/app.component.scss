@@ -1,0 +1,11 @@
+.container-view {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    width: 100vw;
+}
+
+.app-content {
+    width: 100%;
+    height: 100%;
+}

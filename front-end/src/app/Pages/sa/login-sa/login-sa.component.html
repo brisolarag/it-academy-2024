@@ -1,0 +1,22 @@
+<div class="loginSA-container">
+    <form #f="ngForm" (ngSubmit)="submitForm(f)" novalidate>
+        <div class="mb-3">
+          <label for="userInput" class="form-label">Usuário:</label>
+          <input type="text" class="form-control" id="userInput" name="user" [(ngModel)]="loginData.user" required>
+        </div>
+        <div class="mb-3">
+          <label for="userPassInput" class="form-label">Senha:</label>
+          <input type="password" class="form-control" id="userPassInput" aria-describedby="cpfHelp" name="pass" [(ngModel)]="loginData.password" required>
+        </div>
+        <button type="submit" class="btn btn-warning">Login</button>
+        @if (loginStatus == 3) {
+          <div id="submitHelp" class="form-text" style="color: #FF204E;"></div>
+        }
+        @if (loginStatus == 2) {
+          <div id="submitHelp" class="form-text" style="color: #FF204E;">Usuário ou senha incorreta.</div>
+        }
+        @if (loginStatus == 1) {
+          <div id="submitHelp" class="form-text" style="color: #87A922;">Logado com sucesso.</div>
+        }
+    </form>
+</div>
