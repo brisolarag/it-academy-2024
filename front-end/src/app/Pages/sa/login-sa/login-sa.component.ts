@@ -41,10 +41,8 @@ export class LoginSaComponent {
               error: (error) => {
                 this.loginStatus = 2;
                 this.login.logout();
-                  console.error("Error on login", error);
                 }
               })
-              console.log(this.loginStatus);
   }
 
 

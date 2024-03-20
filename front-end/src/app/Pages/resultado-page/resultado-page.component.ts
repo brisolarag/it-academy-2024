@@ -32,7 +32,6 @@ export class ResultadoPageComponent {
         }
       },
       error: (error) => {
-        console.error('Error fetching data:', error);
         this.sorteioAtivo = undefined;
       }
     });
@@ -78,7 +77,6 @@ export class ResultadoPageComponent {
       }
     });
     
-    console.log(this.ganhadoresRodada)
   }
 
   getStatus(n:number) {

@@ -39,7 +39,6 @@ export class ListarApostasPageComponent {
         }
       },
       error: (error) => {
-        console.error('Error fetching the data:', error)
         this.apostas = [];
       }
     })
@@ -55,7 +54,6 @@ export class ListarApostasPageComponent {
         }
       },
       error: (error) => {
-        console.error('Error fetching data:', error);
         this.sorteioAtivo = undefined;
         this.currentStatus == undefined
       }

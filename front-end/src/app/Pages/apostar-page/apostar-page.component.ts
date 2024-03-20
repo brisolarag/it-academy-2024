@@ -48,7 +48,6 @@ sorteioAtivo: any;
         console.log('Resposta:', response);
       },
       error: error => {
-        console.error('Erro:', error);
       }
     });
   }
@@ -62,7 +61,6 @@ sorteioAtivo: any;
         this.sorteioAtivo = res;
       },
       error => {
-        console.error('Ocorreu um erro ao obter o sorteio ativo:', error);
         this.sorteioAtivo = undefined;
       }
     );
