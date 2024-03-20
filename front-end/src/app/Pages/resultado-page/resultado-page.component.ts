@@ -128,7 +128,7 @@ export class ResultadoPageComponent {
     documento.text("Números Escolhidos:", 297, 455, {align: "center"});
     documento.text(numeros.join(', '), 297, 470, {align: "center"});
 
-    documento.save("a4.pdf");
+    documento.save(`ganhadorSorteio_${n}.pdf`);
 
   }
 
