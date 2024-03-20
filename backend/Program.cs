@@ -58,11 +58,10 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 
-using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    var dbContext = services.GetRequiredService<AppDbContext>();
-    dbContext.Database.Migrate();
+    var scope = app.Services.CreateScope();
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.EnsureCreated();
 }
 
 if (app.Environment.IsDevelopment())
@@ -76,7 +75,7 @@ app.UseCors("AllowLocalhost4200");
 app.UseHttpsRedirection();
 
 app.MapGet("/anonymous", () => { Results.Ok("anonymous"); });
-app.MapGet("/authenticated", (ClaimsPrincipal user) => { Results.Ok(new { err = false, msg = $"Authenticated as {user.Identity.Name}" }); }).RequireAuthorization();
+app.MapGet("/authenticated", (ClaimsPrincipal user) => { Results.Ok(new { err = false, msg = $"Authenticated as {user.Identity!.Name}" }); }).RequireAuthorization();
 
 app.AddLoginEndpoints();
 app.AddSorteioEndpoints();
