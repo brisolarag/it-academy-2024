@@ -1,13 +1,17 @@
-Como rodar a aplicação:
+🔧 Como rodar a aplicação:
 1. Iniciar o Docker
 2. Extrair arquivo .zip e acessar o terminal na pasta raiz (dentro da pasta GabrielBrisolara_aplicacao)
-3. executar:
+3. Executar:
+Para executar digite no console:
+
 docker compose up
-ou
-docker compose up -d (para rodar em modo dettach, e liberar o terminal)
+
+ou para rodar em modo dettach, e liberar o terminal:
+docker compose up -d
 
 
-Requisitos para rodar a aplicação:
+
+⚙️ Requisitos para rodar a aplicação:
 
 - Docker
 	Requisitos para o Docker no Windows:
