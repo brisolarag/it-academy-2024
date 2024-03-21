@@ -17,5 +17,7 @@ export class AppComponent {
   ngOnInit() {
     localStorage.removeItem('token');
   }
+
+
 }
 

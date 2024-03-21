@@ -1,4 +1,9 @@
 🔧 Como rodar a aplicação:
+
+Para acessar o menu super admin:
+user: admin
+password: admindell
+
 1. Iniciar o Docker
 2. Extrair arquivo .zip e acessar o terminal na pasta raiz (dentro da pasta GabrielBrisolara)
 3. Executar:

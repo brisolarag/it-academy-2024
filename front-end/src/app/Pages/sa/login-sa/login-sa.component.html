@@ -1,6 +1,7 @@
 <div class="loginSA-container">
     <form #f="ngForm" (ngSubmit)="submitForm(f)" novalidate>
         <div class="mb-3">
+          <div id="submitHelp" class="form-text" style="color: #ffca2c;">Para o login use: user= admin / pass= admindell</div>
           <label for="userInput" class="form-label">Usuário:</label>
           <input type="text" class="form-control" id="userInput" name="user" [(ngModel)]="loginData.user" required>
         </div>
