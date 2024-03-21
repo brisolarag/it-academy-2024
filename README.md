@@ -10,6 +10,8 @@ ou para rodar em modo dettach, e liberar o terminal:
 ```
 docker compose up -d
 ```
+### 4. Acessar o endereço do front-end: http://localhost:4200
+### PEÇO QUE AO INICIAR A APLICAÇÃO ESPERE O CONTAINER DO FRONT-END SER CONSTRUIDO PARA ACESSAR O ENDEREÇO (Pode demorar até 1 minuto)
 
 
 ## ⚙️ Requisitos para rodar a aplicação:
