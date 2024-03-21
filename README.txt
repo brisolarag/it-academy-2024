@@ -1,6 +1,6 @@
 🔧 Como rodar a aplicação:
 1. Iniciar o Docker
-2. Extrair arquivo .zip e acessar o terminal na pasta raiz (dentro da pasta GabrielBrisolara_aplicacao)
+2. Extrair arquivo .zip e acessar o terminal na pasta raiz (dentro da pasta GabrielBrisolara)
 3. Executar:
 Para executar digite no console:
 
