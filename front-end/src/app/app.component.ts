@@ -13,4 +13,9 @@ import { StatusService } from './Services/status.service';
 })
 export class AppComponent {
   title = 'front-end';
+
+  ngOnInit() {
+    localStorage.removeItem('token');
+  }
 }
+
