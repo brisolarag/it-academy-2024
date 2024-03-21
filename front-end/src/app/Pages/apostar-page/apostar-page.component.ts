@@ -50,6 +50,10 @@ sorteioAtivo: any;
       error: error => {
       }
     });
+
+    this.formData.nome = '';
+    this.formData.cpf = '';
+    this.formData.numerosEscolhidos = [];
   }
 
   ngOnInit() {

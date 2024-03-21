@@ -53,7 +53,7 @@ export class ResultadoPageComponent {
         if (res && res.numerosGanhadores) {
           this.numerosGanhadores = res.numerosGanhadores;
           this.lenNumerosGanhadores = res.numerosGanhadores.length;
-          this.numerosGanhadoresString = `Foram gerados os 5 números iniciais + ${5 - this.lenNumerosGanhadores} números extras.`;
+          this.numerosGanhadoresString = `Foram gerados os 5 números iniciais + ${this.lenNumerosGanhadores - 5} números extras.`;
         } else {
           this.numerosGanhadores = [];
         }
